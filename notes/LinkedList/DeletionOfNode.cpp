@@ -74,7 +74,47 @@ void printList(Node* node)
 	}
 }
 
+/* Function to remove the first node
+   of the linked list */
+Node* removeFirstNode(struct Node* head)
+{
+    if (head == NULL)
+        return NULL;
+
+    // Move the head pointer to the next node
+    Node* temp = head;
+    head = head->next;
+
+    delete temp;
+
+    return head;
+}
 // Driver code
+/* Function to remove the last node
+   of the linked list */
+Node* removeLastNode(struct Node* head)
+{
+    if (head == NULL)
+        return NULL;
+
+    if (head->next == NULL) {
+        delete head;
+        return NULL;
+    }
+
+    // Find the second last node
+    Node* second_last = head;
+    while (second_last->next->next != NULL)
+        second_last = second_last->next;
+
+    // Delete last node
+    delete (second_last->next);
+
+    // Change next of second last
+    second_last->next = NULL;
+
+    return head;
+}
 int main()
 {
 
@@ -93,6 +133,14 @@ int main()
 	deleteNode(&head, 1);
 	puts("\nLinked List after Deletion of 1: ");
 
+	printList(head);
+    cout<<endl;
+	head=removeFirstNode(head);
+	printList(head);
+
+
+	cout<<endl;
+	head=removeLastNode(head);
 	printList(head);
 
 	return 0;
