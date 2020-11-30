@@ -1,11 +1,14 @@
 #include <bits/stdc++.h>
 using namespace std;
+//Node decleratoni      
 class Node{
 public:
     int data;
     Node* next;
 };
 
+
+//Transversing operation
 void printList(Node* n){
     while(n != NULL){
         cout<<n->data<<" ";
